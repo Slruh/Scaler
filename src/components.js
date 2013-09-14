@@ -46,8 +46,11 @@ Crafty.c("ScaleArm", {
     var balancePercentOfTotal = balance / totalWeight;
     var rotationValue = 10 * balancePercentOfTotal;
     this.rotation = rotationValue;
-
     Crafty.trigger("ArmRotated", rotationValue);
+
+    if (balance == 0) {
+      Game.checkScaleEvenForWin();
+    }
   },
 });
 
@@ -104,7 +107,10 @@ Crafty.c("PinBoard", {
     for (var i = 0; i < this.weights.length; i++) {
       this.weights[i].y = this.weights[i].y - differenceHeight;
     }
+  },
 
+  numberOfWeights: function() {
+    return this.weights.length;
   }
 });
 

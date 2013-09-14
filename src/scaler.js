@@ -7,6 +7,15 @@ Game = {
     RIGHT: 1
   },
 
+  checkScaleEvenForWin: function() {
+    if (Game.pinBoardLeft.numberOfWeights() + Game.pinBoardRight.numberOfWeights() == 6) {
+        Crafty.e('2D, DOM, Text')
+        .attr({ x: 250, y: 300 })
+        .text('Equality Achieved')
+        .textFont({ size: '30px', weight: 'bold' });
+    }
+  },
+
   // Initialize and start our game
   start: function() {
     Crafty.init(600, 600);
@@ -34,6 +43,5 @@ Game = {
         Crafty.e('Weight').weight(weights[i], {x:xWeightStart,y:450,w:50,h:50});
         xWeightStart += 80;
     }
-
   }
 }
