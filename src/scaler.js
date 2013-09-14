@@ -13,7 +13,7 @@ Game = {
         .attr({ x: 250, y: 300 })
         .text('Equality Achieved')
         .textFont({ size: '30px', weight: 'bold' });
-        Crafty.audio.play("victory", -1);
+        Crafty.audio.play("win", 1);
     }
   },
 

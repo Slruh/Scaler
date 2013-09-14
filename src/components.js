@@ -69,7 +69,7 @@ Crafty.c("PinBoard", {
     if (this.weights.indexOf(weight) == -1) {
       this.weights.push(weight);
       Crafty.trigger("WeightChanged");
-      Crafty.audio.play("attach", -1);
+      Crafty.audio.play("attach", 1);
     }
   },
 
@@ -144,7 +144,7 @@ Crafty.c("Weight", {
       Game.pinBoardRight.removeWeight(this);
 
       //Sounds
-      Crafty.audio.play("thud", -1);
+      Crafty.audio.play("thud", 1);
     }
   }
 });
