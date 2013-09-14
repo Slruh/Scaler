@@ -1,39 +1,27 @@
-Crafty.c("Shelf", {
-  init: function() {
-    this.requires('2D, Canvas, Color')
-      .color('rbg(20,125,40')
-      .attr({
-        x:0,
-        y:500,
-        w:Game.width,
-        h:10
-      });
-  }
-});
-
 Crafty.c("ScaleBase" , {
   init: function() {
-    this.requires('2D, Canvas, Color')
-      .color('rbg(20,125,40)')
+    this.requires('2D, Canvas, Image')
       .attr({
-        x:290,
+        x:275,
         y:50,
         w:20,
         h:450
-    });
+      })
+      .image("images-raw/pen.gif")
   },
 });
 
 Crafty.c("ScaleArm", {
   init: function() {
-    this.requires('2D, Canvas, Color, spr_arm')
+    this.requires('2D, Canvas, Color, Image')
       .color('rgb(20,125,40)')
       .attr({
         x:100,
         y:50,
         w:400,
-        h:10
-      });
+        h:15
+      })
+      .image("images-raw/platform.png")
     this.origin("center");
     this.bind("WeightChanged", this.adjustScale);
   },
@@ -57,8 +45,8 @@ Crafty.c("ScaleArm", {
 Crafty.c("PinBoard", {
 
   init: function() {
-    this.requires('2D, Canvas, Color')
-      .color('rgb(102, 51, 0)');
+    this.requires('2D, Canvas, Image')
+      .image("lhimages/korkBOARD.png");
     this.weights = [];
     this.bind("ArmRotated", this.adjustHeightWithRotation)
   },
@@ -81,6 +69,7 @@ Crafty.c("PinBoard", {
     if (this.weights.indexOf(weight) == -1) {
       this.weights.push(weight);
       Crafty.trigger("WeightChanged");
+      Crafty.audio.play("attach", -1);
     }
   },
 
@@ -118,9 +107,10 @@ Crafty.c("Weight", {
   weight: 0,
 
   init:function() {
-    this.requires('2D, Canvas, Color, Draggable, spr_crate')
+    this.requires('2D, Canvas, Color, Draggable, Image')
       .color('rgb(255,255,204)')
       .enableDrag()
+      .image("lhimages/crate.png")
     this.bind("StopDrag", this.checkHit);
   },
 
@@ -147,11 +137,14 @@ Crafty.c("Weight", {
       }
     }
     else {
-      this.y = 450;
+      this.y = 525;
 
       //Remove the object from any pinboard its in
       Game.pinBoardLeft.removeWeight(this);
       Game.pinBoardRight.removeWeight(this);
+
+      //Sounds
+      Crafty.audio.play("thud", -1);
     }
   }
 });
