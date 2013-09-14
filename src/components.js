@@ -102,7 +102,7 @@ Crafty.c("PinBoard", {
     this.y = heightAdjustment;
     var differenceHeight = oldHeight - heightAdjustment;
     for (var i = 0; i < this.weights.length; i++) {
-      this.weights[0].y = this.weights[0].y - differenceHeight;
+      this.weights[i].y = this.weights[i].y - differenceHeight;
     }
 
   }
@@ -112,10 +112,9 @@ Crafty.c("Weight", {
   weight: 0,
 
   init:function() {
-    this.requires('2D, Canvas, Color, Draggable, Gravity, spr_crate')
+    this.requires('2D, Canvas, Color, Draggable, spr_crate')
       .color('rgb(255,255,204)')
       .enableDrag()
-      .gravity("Shelf");
     this.bind("StopDrag", this.checkHit);
   },
 
@@ -128,7 +127,6 @@ Crafty.c("Weight", {
   checkHit: function() {
     var hitComponents = this.hit("PinBoard");
     if (hitComponents) {
-      this.antigravity();
 
       //Remove from any existing PinBoards
       Game.pinBoardLeft.removeWeight(this);
@@ -143,7 +141,7 @@ Crafty.c("Weight", {
       }
     }
     else {
-      this.gravity();
+      this.y = 450;
 
       //Remove the object from any pinboard its in
       Game.pinBoardLeft.removeWeight(this);

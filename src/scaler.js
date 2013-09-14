@@ -18,9 +18,8 @@ Game = {
     Crafty.e('ScaleArm');
 
     //Load sprites 
-    Crafty.sprite("lhimages/platform.gif", {spr_arm:[0,0,400,15]});
+    Crafty.sprite("lhimages/platform.png", {spr_arm:[0,0,400,15]});
     Crafty.sprite("lhimages/crate.png", {spr_crate:[0,0,100,100]});
-
 
     //Init the pin boards
     Game.pinBoardLeft = Crafty.e('PinBoard')
@@ -32,7 +31,7 @@ Game = {
 
     var xWeightStart = 75;
     for (var i = 0; i < 6; i++) {
-        Crafty.e('Weight').weight(weights[i], {x:xWeightStart,y:375,w:50,h:50});
+        Crafty.e('Weight').weight(weights[i], {x:xWeightStart,y:450,w:50,h:50});
         xWeightStart += 80;
     }
 
