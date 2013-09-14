@@ -7,11 +7,11 @@ Game = {
     RIGHT: 1
   },
 
-
-
   // Initialize and start our game
   start: function() {
     Crafty.init(600, 600);
+    Crafty.audio.add("theme", "audio/main_loop.mp3");
+    Crafty.audio.play("theme");
 
     Crafty.e('Shelf');
     Crafty.e('ScaleBase');
