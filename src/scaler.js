@@ -9,12 +9,22 @@ Game = {
 
   checkScaleEvenForWin: function() {
     if (Game.pinBoardLeft.numberOfWeights() + Game.pinBoardRight.numberOfWeights() == 6) {
-        Crafty.e('2D, DOM, Text')
-        .attr({ x: 250, y: 300 })
-        .text('Equality Achieved')
-        .textFont({ size: '30px', weight: 'bold' });
+        Crafty.e('2D, DOM, Image')
+        .image("lhimages/badge.png")
+        .attr({ x: 100, y: 80 })
         Crafty.audio.play("win", 1);
+        Crafty.audio.remove("theme", 1);
     }
+  },
+
+  shuffleArray:function(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
   },
 
   // Initialize and start our game
@@ -36,6 +46,7 @@ Game = {
     Game.pinBoardRight.pinboard({x:375, y:100, w:200, h:200}, Game.pinBoardSide.RIGHT);
 
     var weights = [1,1,2,2,3,3];
+    weights = Game.shuffleArray(weights);
 
     var xWeightStart = 75;
     for (var i = 0; i < 6; i++) {

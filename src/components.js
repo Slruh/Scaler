@@ -2,8 +2,8 @@ Crafty.c("ScaleBase" , {
   init: function() {
     this.requires('2D, Canvas, Image')
       .attr({
-        x:275,
-        y:50,
+        x:230,
+        y:55,
         w:20,
         h:450
       })
@@ -13,8 +13,7 @@ Crafty.c("ScaleBase" , {
 
 Crafty.c("ScaleArm", {
   init: function() {
-    this.requires('2D, Canvas, Color, Image')
-      .color('rgb(20,125,40)')
+    this.requires('2D, Canvas, Image')
       .attr({
         x:100,
         y:50,
@@ -107,8 +106,7 @@ Crafty.c("Weight", {
   weight: 0,
 
   init:function() {
-    this.requires('2D, Canvas, Color, Draggable, Image')
-      .color('rgb(255,255,204)')
+    this.requires('2D, Canvas, Draggable, Image')
       .enableDrag()
       .image("lhimages/crate.png")
     this.bind("StopDrag", this.checkHit);
