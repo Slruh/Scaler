@@ -26,7 +26,7 @@ Crafty.c("ScaleBase" , {
 
 Crafty.c("ScaleArm", {
   init: function() {
-    this.requires('2D, Canvas, Color')
+    this.requires('2D, Canvas, Color, spr_arm')
       .color('rgb(20,125,40)')
       .attr({
         x:100,
@@ -112,7 +112,7 @@ Crafty.c("Weight", {
   weight: 0,
 
   init:function() {
-    this.requires('2D, Canvas, Color, Draggable, Gravity')
+    this.requires('2D, Canvas, Color, Draggable, Gravity, spr_crate')
       .color('rgb(255,255,204)')
       .enableDrag()
       .gravity("Shelf");

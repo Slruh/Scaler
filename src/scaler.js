@@ -17,6 +17,11 @@ Game = {
     Crafty.e('ScaleBase');
     Crafty.e('ScaleArm');
 
+    //Load sprites 
+    Crafty.sprite("lhimages/platform.gif", {spr_arm:[0,0,400,15]});
+    Crafty.sprite("lhimages/crate.png", {spr_crate:[0,0,100,100]});
+
+
     //Init the pin boards
     Game.pinBoardLeft = Crafty.e('PinBoard')
     Game.pinBoardLeft.pinboard({x:50, y:100, w:150, h:150}, Game.pinBoardSide.LEFT);
